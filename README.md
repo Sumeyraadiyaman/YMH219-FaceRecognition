@@ -28,7 +28,7 @@ Nesne Tabanlı Programlama (YMH219) dersi kapsamında geliştirilmiş, **OpenCV*
 
 ## Kullanım
 
-1. **Kamera Başlat**'a basın (veya **Görüntü Seç** ile bir resim açın). Yüzler dikdörtgenle işaretlenir.
+1. **Kamera Aç**'a basın (veya **Görüntü Seç** ile bir resim açın). Yüzler dikdörtgenle işaretlenir.
 2. **Etiket** kutusuna bir isim yazın, kameraya bakarken **Örnek Ekle**'ye birkaç kez basın (etiket başına 10+ örnek önerilir; başınızı hafifçe çevirerek farklı açılar ekleyin).
 3. En az **iki farklı etiket** için örnek ekleyin. Örneğin izin veren bir arkadaş, ya da kendi yüzünüzün farklı halleri (`Sümeyra`, `Sümeyra-gözlük`).
 4. **Modeli Eğit**'e basın. Bundan sonra yüzlerin üzerinde tahmin edilen isim ve güven yüzdesi görünür.
@@ -37,7 +37,7 @@ Nesne Tabanlı Programlama (YMH219) dersi kapsamında geliştirilmiş, **OpenCV*
 
 ## Özellikler
 
-- **Kamera Başlat / Durdur** ve **Görüntü Seç** işlevleri
+- **Kamera Aç / Kapat** ve **Görüntü Seç** işlevleri
 - Görüntü uygulama içinde (`PictureBox`) gösterilir.
 - **Yüz algılama:** Algılanan her yüz dikdörtgenle işaretlenir.
 - **Birden fazla yüzü aynı karede işaretleme (ek özellik)**

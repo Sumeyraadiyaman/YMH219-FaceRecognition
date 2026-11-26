@@ -506,8 +506,8 @@ namespace YMH219_FaceRecognition
                 BorderStyle = BorderStyle.FixedSingle
             };
 
-            btnCameraStart = CreateButton("▶ Kamera Başlat", MintColor, new Point(690, 15), 143);
-            btnCameraStop = CreateButton("■ Kamera Durdur", RedColor, new Point(842, 15), 143);
+            btnCameraStart = CreateButton("▶ Kamera Aç", MintColor, new Point(690, 15), 143);
+            btnCameraStop = CreateButton("■ Kamera Kapat", RedColor, new Point(842, 15), 143);
             btnSelectImage = CreateButton("Görüntü Seç", LavenderColor, new Point(690, 57), 143);
             btnSaveFrame = CreateButton("Kareyi Kaydet", LightMintColor, new Point(842, 57), 143);
 
