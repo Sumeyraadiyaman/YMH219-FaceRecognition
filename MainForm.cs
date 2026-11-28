@@ -28,6 +28,7 @@ namespace YMH219_FaceRecognition
 
         private int frameBusy = 0;      // 1 = önceki kare henüz ekrana basılmadı (yeni kare atlanır)
         private bool isTraining = false;
+        private volatile bool privacyMode = false; // Kamera iş parçacığı da okuduğu için volatile
 
         private PictureBox picPreview = null!;
         private Button btnCameraStart = null!;
@@ -41,6 +42,7 @@ namespace YMH219_FaceRecognition
         private Button btnOpenFolder = null!;
         private Label lblResult = null!;
         private Label lblStatus = null!;
+        private CheckBox chkPrivacy = null!;
 
         public MainForm()
         {
@@ -61,6 +63,7 @@ namespace YMH219_FaceRecognition
             btnAddSample.Click += BtnAddSample_Click;
             btnTrain.Click += async (s, e) => await TrainAsync(showMessages: true);
             btnOpenFolder.Click += BtnOpenFolder_Click;
+            chkPrivacy.CheckedChanged += (s, e) => privacyMode = chkPrivacy.Checked;
             Shown += MainForm_Shown;
             FormClosing += MainForm_FormClosing;
         }
@@ -162,7 +165,9 @@ namespace YMH219_FaceRecognition
             Bitmap? bitmap = null;
             try
             {
-                List<DetectedFace> faces = analyzer.Analyze(frame);
+                List<DetectedFace> faces = analyzer.Analyze(frame); // Tanıma net görüntüyle yapılır
+                if (privacyMode)
+                    HideFaces(frame, faces);                          // Bulanıklık sadece ekranda
                 bitmap = BitmapConverter.ToBitmap(frame);
                 DrawFaces(bitmap, faces);
 
@@ -211,6 +216,8 @@ namespace YMH219_FaceRecognition
             {
                 using Mat image = FaceImage.Load(dialog.FileName);
                 List<DetectedFace> faces = analyzer.Analyze(image);
+                if (privacyMode)
+                    HideFaces(image, faces);
 
                 Bitmap bitmap = BitmapConverter.ToBitmap(image);
                 DrawFaces(bitmap, faces);
@@ -245,6 +252,13 @@ namespace YMH219_FaceRecognition
             {
                 MessageBox.Show("Kare kaydedilemedi: " + ex.Message, "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        // Gizlilik modunda bütün yüzleri pikselleştirir (analizden SONRA çağrılır)
+        private static void HideFaces(Mat image, List<DetectedFace> faces)
+        {
+            foreach (DetectedFace face in faces)
+                FaceImage.Pixelate(image, face.Area);
         }
 
         // Yeni görüntüyü PictureBox'a koyar, eskisini bellekten siler
@@ -556,15 +570,25 @@ namespace YMH219_FaceRecognition
             lblStatus = new Label
             {
                 Location = new Point(15, 525),
-                Size = new Size(970, 25),
+                Size = new Size(665, 25),
                 Font = new Font("Segoe UI", 10F, FontStyle.Bold),
                 ForeColor = TextColor,
                 Text = "Durum: Başlatılıyor..."
             };
 
+            chkPrivacy = new CheckBox
+            {
+                Text = "Gizlilik modu (yüzleri bulanıklaştır)",
+                Location = new Point(690, 523),
+                AutoSize = true,
+                ForeColor = PinkColor,
+                Font = new Font("Segoe UI", 9.5F, FontStyle.Bold),
+                Cursor = Cursors.Hand
+            };
+
             Controls.AddRange(new Control[]
             {
-                picPreview, btnCameraStart, btnCameraStop, btnSelectImage, btnSaveFrame,
+                chkPrivacy, picPreview, btnCameraStart, btnCameraStop, btnSelectImage, btnSaveFrame,
                 lblDataTitle, lblLabel, txtLabel, btnAddSample, btnTrain, lstLabels, btnOpenFolder,
                 lblResultTitle, lblResult, lblStatus
             });

@@ -44,6 +44,7 @@ Nesne Tabanlı Programlama (YMH219) dersi kapsamında geliştirilmiş, **OpenCV*
 - **Tanıma:** Tahmin edilen etiket ve güven skoru hem görüntü üzerinde hem de sonuç kutusunda gösterilir.
   - Pembe: tanınan kişi · Kırmızı: "Bilinmiyor" · Lavanta: model henüz eğitilmedi
 - **Basit eğitim/veri ekleme ekranı (ek özellik):** Etiket yazıp örnek ekleme, örnek sayılarını görme, modeli eğitme
+- **Gizlilik modu (ek özellik):** İşaretlendiğinde yüzler ekranda pikselleştirilir; kutu, etiket ve güven skoru görünmeye devam eder. Tanıma net görüntü üzerinde yapıldığı için doğruluk etkilenmez. README'deki ekran görüntüleri bu modla alınmıştır.
 - **Kareyi Kaydet (ek özellik):** İşaretlenmiş görüntüyü `Belgeler\YMH219-FaceRecognition\Kayitlar` klasörüne kaydeder.
 - **Hata yönetimi:** Kamera açılamazsa, bağlantısı koparsa, model dosyası bulunamazsa veya görüntü okunamazsa uygulama kapanmaz; kullanıcıya anlaşılır mesaj gösterilir.
 
@@ -56,7 +57,7 @@ Nesne Tabanlı Programlama (YMH219) dersi kapsamında geliştirilmiş, **OpenCV*
 | `FaceRecognizerService` | LBPH modelini eğitir ve yüzün etiketini tahmin eder |
 | `FaceDataset` | Yerel örnekleri etiket klasörlerinde saklar ve okur |
 | `FaceAnalyzer` | Algılama + tanımayı birleştirir; bir karedeki tüm yüzleri sonuçlarıyla döndürür |
-| `FaceImage` | Yüz bölgesini hazırlama (100x100, gri, ışık dengeleme), görüntü okuma/yazma |
+| `FaceImage` | Yüz bölgesini hazırlama (100x100, gri, ışık dengeleme), gizlilik için pikselleştirme, görüntü okuma/yazma |
 | `MainForm` | Arayüz, çizim ve kullanıcı etkileşimi |
 
 ## Teknik Notlar
