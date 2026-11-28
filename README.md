@@ -90,4 +90,4 @@ Görüntüler gizlilik modu açıkken alınmıştır. Öğrencinin kendi yüzün
 ## Öğrenci
 
 - **Ad Soyad:** Sümeyra Adıyaman
-- **Öğrenci No:** BURAYA_NUMARANI_YAZ
+- **Öğrenci No:** 250541012
