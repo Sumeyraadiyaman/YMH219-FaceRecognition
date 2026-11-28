@@ -33,8 +33,8 @@ namespace YMH219_FaceRecognition
             using Mat small = new Mat();
             using Mat blocky = new Mat();
 
-            Cv2.Resize(region, small, new Size(10, 10), 0, 0, InterpolationFlags.Area);
-            Cv2.Resize(small, blocky, new Size(width, height), 0, 0, InterpolationFlags.Nearest);
+            Cv2.Resize(region, small, new OpenCvSharp.Size(10, 10), 0, 0, InterpolationFlags.Area);
+            Cv2.Resize(small, blocky, new OpenCvSharp.Size(width, height), 0, 0, InterpolationFlags.Nearest);
             blocky.CopyTo(region); // Bölgeye yazmak, orijinal görüntüyü değiştirir
         }
 
