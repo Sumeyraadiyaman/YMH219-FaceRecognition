@@ -70,13 +70,15 @@ Nesne Tabanlı Programlama (YMH219) dersi kapsamında geliştirilmiş, **OpenCV*
 
 ## Ekran Görüntüleri
 
-**Yüz algılama ve tanıma**
+Görüntüler gizlilik modu açıkken alınmıştır. Öğrencinin kendi yüzünün iki farklı hali iki etiket olarak kullanılmıştır.
 
-![Tanıma](screenshots/tanima.png)
+**Etiket 1: Sümeyra (Gözlüklü)**
 
-**Örnek ekleme ve eğitim**
+![Tanıma - gözlüklü](screenshots/tanima.png)
 
-![Eğitim](screenshots/egitim.png)
+**Etiket 2: Sümeyra (Gözlüksüz)**
+
+![Tanıma - gözlüksüz](screenshots/egitim.png)
 
 ## Bilinen Sınırlamalar / Geliştirme Notları
 
